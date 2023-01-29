@@ -55,6 +55,7 @@ input {
   color: rgb(74, 74, 74);
   font-size: 18px;
   border: 2px solid transparent;
+  outline: none;
 }
 .submit {
   width: 17%;
@@ -70,11 +71,11 @@ input {
 .result {
   margin-top: 60px;
   background: rgba(255, 255, 255, 0.6);
-  min-height: 500px;
+  min-height: 0px;
   padding: 12px;
   border-radius: 6px;
   color: rgb(74, 74, 74);
-  display: block;
+  display: none;
   box-shadow: 0px 0px 7px 3px rgba(0, 0, 0, 0.11);
 }
 .result-info {
@@ -168,4 +169,14 @@ input {
   position: absolute;
   left: 18px;
   top: 11px;
+}
+
+.error{
+  display: none;
+  margin-top: 30px;
+  border-radius: 10px;
+  font-size: 25px;
+  background: rgba(255, 255, 255, 0.6);
+  color: rgb(74, 74, 74);
+  box-shadow: 0px 0px 7px 3px rgba(0, 0, 0, 0.11);
 }
