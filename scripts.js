@@ -32,7 +32,7 @@ const errNotFound = (error) => {
 };
 
 search.addEventListener('click', () => {
-    if(err.style.display = 'block'){
+    if (err.style.display = 'block') {
         err.style.display = 'none';
     }
 })
@@ -43,6 +43,7 @@ search.addEventListener('click', () => {
 const submitSount = () => {
     if (state.phonetics.length) {
         const sound = state.phonetics[0];
+
         console.log(sound);
 
         if (sound.audio) {
@@ -50,20 +51,20 @@ const submitSount = () => {
         }
     }
 }
-const insertWord = () => {
 
+const insertWord = () => {
     containerWords.innerText = state.word;
     resList.innerText = state.phonetics[0].text;
     resDesc.innerText = state.meanings[0].definitions[0].definition;
     example.innerText = state.meanings[0].definitions[0].example;
-    resExample.innerText = state.meanings[0].definitions[1].definition
+    resExample.innerText = state.meanings[0].definitions[1].definition;
     example2.innerText = state.meanings[0].definitions[1].example;
-    resExample2.innerText = state.meanings[0].definitions[2].definition
-    result.style.display = 'block'
+    resExample2.innerText = state.meanings[0].definitions[2].definition;
+    result.style.display = 'block';
 
-
-
+    console.log(state.word);
 }
+
 
 const submitForm = async (e) => {
     e.preventDefault();
@@ -72,14 +73,18 @@ const submitForm = async (e) => {
     try {
         const response = await fetch(`${url}${state.word}`);
         const data = await response.json();
+        console.log(state.word);
+
         if (response.ok && data.length) {
             const item = data[0];
-            console.log(item);
+
+
             state = {
                 ...state,
                 meanings: item.meanings,
                 phonetics: item.phonetics,
             };
+
             insertWord();
         } else {
             errNotFound(data);
@@ -89,20 +94,18 @@ const submitForm = async (e) => {
     };
     input.value = '';
 };
-icon.addEventListener('click', (e) => {
+icon.addEventListener('click', () => {
     if (input.value.length) {
         input.value = ''
     }
-    console.log(e);
 })
 
 const KeyUp = (e) => {
     const value = e.target.value;
     state.word = value;
-    console.log(state.word);
 }
 
 input.addEventListener('keyup', KeyUp),
-form.addEventListener("submit", submitForm);
+    form.addEventListener("submit", submitForm);
 soundButton.addEventListener('click', submitSount);
 
